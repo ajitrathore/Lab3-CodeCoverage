@@ -12,7 +12,8 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class GroceryListTest {
 
-    private GroceryList myGroceryList = new GroceryList();
+    private GroceryList myGroceryList = createGroceryList();
+
 
 
 
@@ -33,7 +34,6 @@ public class GroceryListTest {
         //then size of grocerylist increments by 1 and
 
         assertTrue( (myGroceryList.getListOfItemForShopping().size() == initialSizeOfGroceryList+1));
-        assertTrue(myGroceryList.getListOfItemForShopping().indexOf(itemForShopping) == 0 );
 
     }
 
@@ -45,9 +45,26 @@ public class GroceryListTest {
 
     }
 
+    @Test
+    public void initialGroceryListState()
+    {
+        //when we initialize a new grocerylist
+       GroceryList groceryList=new GroceryList();
+       //then the list of tems in it should not be null - to avoid runtime null pointer exceptions?
+
+       assertNotNull(groceryList.getListOfItemForShopping());
+    }
+
     @After
     public void tearDown()
     {
         myGroceryList.dispose();
+    }
+
+
+    //Creating a static GroceryList Object for testing so we have shared instance
+    private static GroceryList createGroceryList() {
+
+        return new GroceryList();
     }
 }
