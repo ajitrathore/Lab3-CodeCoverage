@@ -3,6 +3,8 @@ package com.upskillagility.tdd;
 import org.junit.After;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
@@ -15,35 +17,30 @@ public class GroceryListTest {
     private GroceryList myGroceryList = createGroceryList();
 
 
-
-
-    @Test
-    public void setListOfItemsForShopping()
-    {
-         final int initialSizeOfGroceryList = 0;
-
-
-
-        //Given we have a new Object to add to our shopping list
-        Object itemForShopping = new Object();
-
-        // when we add this new item to the shopping list
-
-        myGroceryList.getListOfItemForShopping().add(itemForShopping);
-
-        //then size of grocerylist increments by 1 and
-
-        assertTrue( (myGroceryList.getListOfItemForShopping().size() == initialSizeOfGroceryList+1));
-
-    }
-
     @Test
     public void getListOfItemsForShopping()
     {
-        //Gi
+        //when we nvoke get method for list of items without setting/initializing it
+        //then we should not get Null object so that we avoid runtime exceptions form consumer applications
         assertNotNull(myGroceryList.getListOfItemForShopping());
 
     }
+
+    @Test
+    public void setListOfItemForShopping()
+    {
+        //given we have a new list
+        ArrayList groceryList=new ArrayList();
+
+        //when we initialize the grocery list object with this list
+
+        myGroceryList.setListOfItemForShopping(groceryList) ;
+
+        // then we see that grocerylist items list and this list are same.
+
+        assertTrue( myGroceryList.getListOfItemForShopping().equals(groceryList) );
+    }
+
 
     @Test
     public void initialGroceryListState()

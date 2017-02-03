@@ -21,11 +21,10 @@ public class GroceryList {
         return listOfItemForShopping;
     }
 
-    public void setListOfItemForShopping(List listOfItemForShopping) {
-        this.listOfItemForShopping = listOfItemForShopping;
-    }
 
-    public void setListOfItemForShopping(GroceryList myGroceryList) {
+
+    public void setListOfItemForShopping(ArrayList myGroceryList) {
+        listOfItemForShopping=myGroceryList;
     }
 
     public void dispose() {
